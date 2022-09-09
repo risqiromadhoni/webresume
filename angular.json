@@ -23,9 +23,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/fonts/marsha/stylesheet.css",
+              "src/assets/fonts/themify-icons.css",
+              "src/assets/css/glanz_library.css",
+              "src/assets/css/glanz_style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-1.12.4.min.js",
+              "src/assets/js/glanz_library.js",
+              "src/assets/js/glanz_script.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -97,5 +105,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "e5011398-7ae1-4469-b30c-39945200cb53"
   }
 }
