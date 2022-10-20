@@ -1,0 +1,39 @@
+name: Sanity Code
+
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+      - ci/debug*
+
+jobs:
+  install_dep:
+    strategy:
+      matrix:
+        node: ['16.x']
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout Current Commit
+        uses: actions/checkout@v3
+
+      - name: Set Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: yarn
+
+      - name: Install Dependencies
+        run: yarn install --immutable
+
+      - name: Audit Dependencies
+        run: yarn npm audit
+
+      - name: Get Next.js Info
+        run: yarn next info
+        
+  
